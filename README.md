@@ -16,7 +16,7 @@ projects. Each project's own README covers how to build and test that project.
   errors, and versioning. It also covers how posts map to a site's content type
   and fields, and lists open questions. Every server module implements it, and
   both apps use it.
-- **[specifications.md](specifications.md): the app specification.** It
+- **[SPECIFICATIONS.md](SPECIFICATIONS.md): the app specification.** It
   describes everything the apps do, screen by screen: sites and login, the
   feed, the post page, the editor, media handling and video compression, tags,
   location, dates, sharing, errors, security, accessibility, and appearance.
@@ -25,19 +25,16 @@ projects. Each project's own README covers how to build and test that project.
 
 ## Projects
 
-| Folder | What it is | README |
-|--------|------------|--------|
-| `../moby_backdrop` | The Moby module for Backdrop CMS (`moby`). It provides the API, the settings and setup wizard, and the carousel for showing posts. | [README](../moby_backdrop/README.md) |
-| `../moby_android` | The Android app (`org.mobyapp.android`), built with Gradle. It is the reference implementation of the specification. | [README](../moby_android/README.md) |
-| `../moby_ios` | The iOS app (`org.mobyapp.ios`), built on Ubuntu with xtool. | [README](../moby_ios/README.md) |
-
-The module is used on quicksketch.org through a symlink,
-`public_html/modules/custom/moby`, which points to `../moby_backdrop`.
+| Repository | What it is |
+|------------|------------|
+| [backdrop-contrib/moby](https://github.com/backdrop-contrib/moby) | The Moby module for Backdrop CMS (`moby`). It provides the API, the settings and setup wizard, and the carousel for showing posts. |
+| [quicksketch/moby_android](https://github.com/quicksketch/moby_android) | The Android app (`org.mobyapp.android`), built with Gradle. It is the reference implementation of the specification. |
+| [quicksketch/moby_ios](https://github.com/quicksketch/moby_ios) | The iOS app (`org.mobyapp.ios`), built on Ubuntu with xtool. |
 
 ## How the documents relate
 
 - **The API comes first.** API.md defines what a site offers, and
-  specifications.md refers to it rather than repeating it. The apps adapt to
+  SPECIFICATIONS.md refers to it rather than repeating it. The apps adapt to
   each site's discovery document (`GET /meta`) and never hard-code what a site
   supports.
 - **Android is the reference app.** When the specification and the Android
@@ -45,9 +42,13 @@ The module is used on quicksketch.org through a symlink,
   iOS app match.
 - **Every API change gets a version.** Any change to the API, additive or
   breaking, adds a row to the changelog in API.md and adds one to
-  `MOBY_API_VERSION` in `moby_backdrop/moby.module`. The apps record the
-  version they're built for in `ApiVersion.kt` and `ApiVersion.swift`. See
-  "Versioning" in both documents.
+  `MOBY_API_VERSION` in the module's
+  [`moby.module`](https://github.com/backdrop-contrib/moby/blob/1.x-1.x/moby.module).
+  The apps record the version they're built for in
+  [`ApiVersion.kt`](https://github.com/quicksketch/moby_android/blob/main/app/src/main/java/org/mobyapp/android/data/ApiVersion.kt)
+  and [`ApiVersion.swift`](https://github.com/quicksketch/moby_ios/blob/main/Sources/MobyCore/ApiVersion.swift).
+  See "Versioning" in [API.md](API.md#versioning) and
+  [SPECIFICATIONS.md](SPECIFICATIONS.md#versioning).
 - **Shared rules stay in step.** Hashtags, HTML descriptions, dates, site
   addresses, media checks, and video compression must give the same results
   on the server and in both apps. The specification's "Shared test cases"

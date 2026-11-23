@@ -62,7 +62,8 @@ only once it implements every change up to N.
 
 ### Changelog
 
-Every change adds a row here and one to `MOBY_API_VERSION` in `moby_backdrop/moby.module`.
+Every change adds a row here and one to `MOBY_API_VERSION` in the Backdrop
+module's [`moby.module`](https://github.com/backdrop-contrib/moby/blob/1.x-1.x/moby.module).
 
 | Version | Change | Breaking |
 |---------|--------|----------|
